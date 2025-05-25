@@ -33,6 +33,7 @@ echo "Démarrage de $PY_FILE"
   --master ${MASTER} \
   --deploy-mode ${MODE} \
   --jars "$JARS" \
+  --conf spark.ui.port=4040 \
   --conf "spark.driver.extraClassPath=${JARS_PATH}/*" \
   --conf "spark.executor.extraClassPath=${JARS_PATH}/*" \
   --conf "spark.driver.memory=${SPARK_DRIVER_MEMORY}" \

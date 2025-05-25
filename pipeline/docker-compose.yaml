@@ -5,6 +5,8 @@ x-pipeline-defaults: &pipeline-template
   volumes:
     - ./:/app/application
     - C:/Users/julie/Documents/M1/BIG DATA FRAMEWORK 2/datasource:/app/datasource
+  ports:
+    - "4040:4040"
   command: ["/app/application/entrypoint.sh"]
   networks:
     - hadoopnetwork
