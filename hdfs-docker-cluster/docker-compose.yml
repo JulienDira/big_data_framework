@@ -1,0 +1,330 @@
+##########---------- HDFS ----------##########
+services:
+
+#####----- NAMENODE -----#####
+
+  namenode:
+    image: apache/hadoop:3
+    container_name: namenode
+    hostname: namenode
+    user: root
+    environment:
+      - HADOOP_HOME=/opt/hadoop
+      - HADOOP_HEAPSIZE=1024  # Taille du heap en MB
+      - HDFS_NAMENODE_OPTS=-Xmx1024m  # Mémoire maximale pour le NameNode
+    volumes:
+      - C:/Users/julie/Documents/M1/BIG DATA FRAMEWORK 2/datalake/namenode:/opt/hadoop/data/nameNode
+      - ./config/hadoop:/opt/hadoop/etc/hadoop
+      - ./scripts/start-hdfs.sh:/start-hdfs.sh
+    ports:
+      - "9870:9870"  # Interface Web NameNode
+      - "9000:9000"  # RPC NameNode
+      - "8020:8020"  # FileSystem Port
+    command: [ "/bin/bash", "/start-hdfs.sh" ]
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 2G
+    networks:
+      hadoopnetwork:
+        ipv4_address: 172.20.0.2
+
+# #####----- DATANODE -----#####
+
+  datanode1:
+    image: apache/hadoop:3
+    container_name: datanode1
+    hostname: datanode1
+    user: root
+    environment:
+      - HADOOP_HOME=/opt/hadoop
+      - HADOOP_HEAPSIZE=2048
+      - HDFS_DATANODE_OPTS=-Xmx2048m
+    volumes:
+      - C:/Users/julie/Documents/M1/BIG DATA FRAMEWORK 2/datalake/datanode1:/opt/hadoop/data/dataNode
+      - ./config/hadoop:/opt/hadoop/etc/hadoop
+      - ./scripts/init-datanode.sh:/init-datanode.sh
+    ports:
+      - "9864:9864"  # Interface Web DataNode
+      - "9866:9866"  # DataNode IPC
+    command: [ "/bin/bash", "/init-datanode.sh" ]
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 2G
+    networks:
+      hadoopnetwork:
+        ipv4_address: 172.20.0.3
+
+#####----- YARN -----#####
+
+  resourcemanager:
+    image: apache/hadoop:3
+    container_name: resourcemanager
+    hostname: resourcemanager
+    user: root
+    environment:
+      - HADOOP_HOME=/opt/hadoop
+      - YARN_RESOURCEMANAGER_HEAPSIZE=2048
+      - YARN_RESOURCEMANAGER_OPTS=-Xmx2048m
+    volumes:
+      - ./config/hadoop:/opt/hadoop/etc/hadoop
+      - ./scripts/start-resourcemanager.sh:/start-resourcemanager.sh
+    ports:
+      - "8088:8088"  # Web UI YARN
+      - "8032:8032"  # RPC ResourceManager
+      - "8030:8030"  # Scheduler
+      - "8031:8031"  # Resource Tracker
+      - "8033:8033"  # Admin Interface
+    depends_on:
+      - namenode
+    command: [ "/bin/bash", "/start-resourcemanager.sh" ]
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 2G
+    networks:
+      hadoopnetwork:
+        ipv4_address: 172.20.0.4
+
+##########---------- SPARK ----------##########
+
+#####----- MASTER -----#####
+
+  spark-master:
+    build:
+      context: .
+      dockerfile: Dockerfiles/Dockerfile.spark
+    image: custom-spark:3.5.0
+    container_name: spark-master
+    hostname: spark-master
+    environment:
+      - SPARK_MODE=master
+      - SPARK_MASTER_HOST=spark-master
+      - SPARK_HOME=/opt/bitnami/spark
+      - SPARK_LOCAL_DIRS=/tmp/spark
+      - HADOOP_CONF_DIR=/etc/hadoop/conf
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
+      - YARN_CONF_DIR=/etc/hadoop/conf
+      - HADOOP_HOME=/etc/hadoop
+    volumes:
+      # - ./config/spark:/opt/bitnami/spark/conf
+      - ./config/hadoop:/etc/hadoop/conf
+      # - ./jars:/opt/bitnami/spark/jars
+    depends_on:
+      - namenode
+    ports:
+      - "8080:8080"
+      - "7077:7077"
+    networks:
+      hadoopnetwork:
+        ipv4_address: 172.20.0.5
+
+  spark-worker:
+    image: custom-spark:3.5.0
+    container_name: spark-worker
+    hostname: spark-worker
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-master:7077
+      - HADOOP_CONF_DIR=/etc/hadoop/conf
+      - YARN_CONF_DIR=/etc/hadoop/conf
+      - HADOOP_HOME=/etc/hadoop
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
+    volumes:
+      # - ./config/spark:/opt/bitnami/spark/conf
+      - ./config/hadoop:/etc/hadoop/conf
+      # - ./jars:/opt/bitnami/spark/jars
+    depends_on:
+      - spark-master
+      - namenode
+    ports:
+      - "8081:8081"
+    networks:
+      hadoopnetwork:
+        ipv4_address: 172.20.0.6
+
+
+##########---------- POSTGRES ----------##########
+
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    hostname: postgres
+    environment:
+      POSTGRES_DB: metastore
+      POSTGRES_USER: hive
+      POSTGRES_PASSWORD: hive
+    volumes:
+      - C:/Users/julie/Documents/M1/BIG DATA FRAMEWORK 2/datamart:/var/lib/postgresql/data
+      - ./config/postgres:/etc/postgresql
+    ports:
+      - "5432:5432"
+    networks:
+      hadoopnetwork:
+        ipv4_address: 172.20.0.8
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U hive -d metastore"]
+      interval: 10s
+      retries: 5
+
+##########---------- HIVE ----------##########
+
+  metastore:
+    image: apache/hive:3.1.3
+    depends_on:
+      - postgres
+    restart: unless-stopped
+    container_name: metastore
+    hostname: metastore
+    environment:
+      # Configuration de base de Hive
+      HADOOP_HOME: /opt/hadoop
+      HIVE_HOME: /opt/hive
+      HADOOP_CONF_DIR: /opt/hadoop/etc/hadoop
+      HIVE_CONF_DIR: /opt/hive/conf
+
+      DB_DRIVER: postgres
+      SCHEMA_COMMAND: upgradeSchema
+      IS_RESUME: true
+      SERVICE_NAME: 'metastore'
+      SERVICE_OPTS: '-Xmx1G -Djavax.jdo.option.ConnectionDriverName=org.postgresql.Driver
+                     -Djavax.jdo.option.ConnectionURL=jdbc:postgresql://postgres:5432/metastore
+                     -Djavax.jdo.option.ConnectionUserName=hive
+                     -Djavax.jdo.option.ConnectionPassword=hive'
+    ports:
+        - '9083:9083'
+    volumes:
+      # Configuration et données de Hive
+      - ./config/hive:/opt/hive/conf
+      - C:/Users/julie/Documents/M1/BIG DATA FRAMEWORK 2/datawarehouse/data:/opt/hive/data/warehouse
+      - C:/Users/julie/Documents/M1/BIG DATA FRAMEWORK 2/datawarehouse/logs:/opt/hive/logs
+      # Driver PostgreSQL et configuration Hadoop
+      - ./config/hive/lib/postgresql-42.2.5.jar:/opt/hive/lib/postgresql-42.2.5.jar
+      - ./config/hadoop:/opt/hadoop/etc/hadoop
+      # Script de démarrage personnalisé
+      - ./scripts/start-hive.sh:/start-hive.sh
+    command: ["/bin/bash", "/opt/hive/bin/hive --service metastore"]
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: "2g"
+    networks:
+      hadoopnetwork:
+        ipv4_address: 172.20.0.7
+
+  hiveserver2:
+    image: apache/hive:3.1.3
+    depends_on:
+      - metastore
+    restart: unless-stopped
+    container_name: hiveserver2
+    environment:
+      HIVE_SERVER2_THRIFT_PORT: 10000
+      SERVICE_OPTS: '-Xmx1G -Dhive.metastore.uris=thrift://metastore:9083'
+      IS_RESUME: 'true'
+      SERVICE_NAME: 'hiveserver2'
+    ports:
+      - '10000:10000'
+      - '10002:10002'
+    volumes:
+      - C:/Users/julie/Documents/M1/BIG DATA FRAMEWORK 2/datawarehouse/data:/opt/hive/data/warehouse
+    command: ["/bin/bash", "/opt/hive/bin/hive --service hiveserver2"]
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: "2g"
+    networks:
+      hadoopnetwork:
+        ipv4_address: 172.20.0.9
+
+##########---------- GUI ----------##########
+
+#####----- HUE -----#####
+
+  # hue:
+  #   image: gethue/hue:latest
+  #   container_name: hue
+  #   hostname: hue
+  #   ports:
+  #     - "8888:8888"  # Port pour accéder à Hue
+  #   environment:
+  #     - DATABASE_ENGINE=sqlite
+  #     - SECRET_KEY=hue_secret
+  #     - HUE_DATABASE_NAME=hue
+  #   depends_on:
+  #     - hive-metastore
+  #     - namenode
+  #     - resourcemanager
+  #   volumes:
+  #     # Configuration Hadoop (HDFS et YARN)
+  #     - ./config/hadoop:/usr/share/hue/desktop/conf/ # /opt/hadoop/etc/hadoop
+  #     # Configuration Hue
+  #     - ./config/hue/hue.ini:/usr/share/hue/desktop/conf/hue.ini
+  #     # Données persistantes de Hue
+  #     - ./data/hue:/opt/hue/desktop
+  #   # command: >
+  #   #   bash -c "
+  #   #   apt-get install python3.8-dev python3-distutils &&
+  #   #   /usr/share/hue/build/env/bin/pip install psycopg2-binary"
+  #   networks:
+  #     hadoopnetwork:
+  #       ipv4_address: 172.20.0.9
+# bash -c "/usr/share/hue/build/env/bin/python -m pip install --upgrade pip && ./build/env/bin/pip install psycopg2 && /entrypoint.sh"
+#####----- PGADMIN -----#####
+
+  # pgadmin:
+  #   image: dpage/pgadmin4:latest
+  #   container_name: pgadmin
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: admin@admin.com
+  #     PGADMIN_DEFAULT_PASSWORD: admin
+  #     PGADMIN_ENABLE_TLS: "False"  # Désactiver TLS pour éviter les problèmes si activé par erreur
+  #     SCRIPT_NAME: /pgadmin  # Configure le chemin de base pour pgAdmin
+  #   ports:
+  #     - "5050:80"  # Port pour accéder à pgAdmin
+  #   depends_on:
+  #     - postgres
+  #   networks:
+  #     hadoopnetwork:
+  #       ipv4_address: 172.20.0.10
+
+#####----- NGINX -----#####
+
+  # nginx:
+  #   image: nginx:latest
+  #   container_name: nginx
+  #   ports:
+  #     - "8090:80" # Expose NGINX sur le port 80
+  #   volumes:
+  #     - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf   # Fichier de configuration NGINX
+  #     - ./config/nginx/www:/usr/share/nginx/html                      # Répertoire contenant la page HTML
+  #   depends_on:
+  #     - namenode
+  #     - hue
+  #     - pgadmin
+  #     - spark-master
+  #     - spark-worker
+  #   networks:
+  #     hadoopnetwork:
+  #       ipv4_address: 172.20.0.11
+
+
+volumes:
+  namenode_data:
+  datanode1_data:
+  hive_data:
+  postgres_data:
+
+networks:
+  hadoopnetwork:
+    driver: bridge
+    name: "hadoopnetwork"
+    ipam:
+      config:
+        - subnet: "172.20.0.0/24"  # Ajout du sous-réseau

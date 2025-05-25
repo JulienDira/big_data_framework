@@ -1,0 +1,13 @@
+https://medium.com/@bayuadiwibowo/deploying-a-big-data-ecosystem-dockerized-hadoop-spark-hive-and-zeppelin-654014069c82
+https://bytemedirk.medium.com/setting-up-an-hdfs-cluster-with-docker-compose-a-step-by-step-guide-4541cd15b168
+
+psql -U hive -d metastore
+DROP SCHEMA public CASCADE;
+CREATE SCHEMA public;
+
+
+sudo lsof -i :9000
+sudo kill -9 3119
+
+lsblk
+sudo mount /dev/sda1 /mnt/db

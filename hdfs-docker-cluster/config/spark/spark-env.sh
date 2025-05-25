@@ -1,0 +1,9 @@
+export SPARK_MASTER_HOST=spark-master
+# export SPARK_MASTER_URL=spark://spark-master:7077
+export HADOOP_CONF_DIR=/opt/hadoop/etc/hadoop
+export SPARK_HOME=/opt/bitnami/spark/
+export HDFS_NAMENODE=hdfs://namenode:9000
+export HADOOP_HOME=/opt/hadoop
+export LD_LIBRARY_PATH=$HADOOP_HOME/lib/native:$LD_LIBRARY_PATH
+LD_PRELOAD=/opt/bitnami/common/lib/libnss_wrapper.so
+LD_PRELOAD=/opt/bitnami/common/lib/libnss_wrapper.so

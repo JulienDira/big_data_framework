@@ -1,0 +1,5 @@
+pyspark==3.5.5  
+Flask
+pandas
+sqlalchemy
+psycopg2-binary
