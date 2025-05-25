@@ -41,7 +41,7 @@ def run_pipeline(app_name: str='SourceToDataBase'):
             .write_to_postgresql(
                 dataframe=raw_data,
                 table_name=table_name,
-                write_mode='overwrite'
+                write_mode='append'
             )
 
             SparkPipelineInit.logger.info(f"✔ Pipeline exécutée avec succès pour '{file_name}'.")
