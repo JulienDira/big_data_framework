@@ -1,0 +1,62 @@
+<configuration>
+    <!-- ResourceManager Hostname -->
+    <property>
+        <name>yarn.resourcemanager.hostname</name>
+        <value>resourcemanager</value>
+    </property>
+
+    <!-- ResourceManager Addresses -->
+    <property>
+        <name>yarn.resourcemanager.address</name>
+        <value>172.20.0.4:8032</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.scheduler.address</name>
+        <value>172.20.0.4:8030</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.webapp.address</name>
+        <value>172.20.0.4:8088</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.resource-tracker.address</name>
+        <value>172.20.0.4:8031</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.admin.address</name>
+        <value>172.20.0.4:8033</value>
+    </property>
+
+    <!-- Alloue max 4 Go pour YARN sur ce nœud -->
+    <property>
+        <name>yarn.nodemanager.resource.memory-mb</name>
+        <value>4096</value>
+    </property>
+
+
+    <!-- Autorise des conteneurs de 2 Go max -->
+    <property>
+        <name>yarn.scheduler.maximum-allocation-mb</name>
+        <value>3072</value> <!-- par exemple 4 Go -->
+    </property>
+
+
+    <!-- Max 1 cœur par conteneur pour ne pas saturer -->
+    <property>
+        <name>yarn.nodemanager.resource.cpu-vcores</name>
+        <value>4</value>
+    </property>
+
+    <property>
+        <name>yarn.scheduler.maximum-allocation-vcores</name>
+        <value>4</value>
+    </property>
+
+    <!-- Percentage of physical CPU available to YARN -->
+    <property>
+        <name>yarn.nodemanager.resource.percentage-physical-cpu-limit</name>
+        <value>50</value>
+        <description>Percentage of physical CPU resources that YARN can utilize (50%).</description>
+    </property>
+
+</configuration>

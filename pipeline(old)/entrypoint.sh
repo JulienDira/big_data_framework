@@ -33,6 +33,7 @@ echo "Démarrage de $PY_FILE"
   --master ${MASTER} \
   --deploy-mode ${MODE} \
   --jars "$JARS" \
+  --conf spark.ui.port=4040 \
   --conf "spark.driver.extraClassPath=${JARS_PATH}/*" \
   --conf "spark.executor.extraClassPath=${JARS_PATH}/*" \
   --conf "spark.driver.memory=${SPARK_DRIVER_MEMORY}" \
@@ -50,7 +51,7 @@ echo "Démarrage de $PY_FILE"
   --conf "spark.sql.shuffle.partitions=50" \
   --conf "spark.memory.fraction=0.5" \
   --conf "spark.memory.storageFraction=0.3" \
-  "/app/application/application/$PY_FILE"  >> "/app/application/logs/$(basename $PY_FILE).log" 2>&1
+  "/app/application/task/$PY_FILE"
 
 echo "=== Job terminé (ou en streaming continu) ==="
 

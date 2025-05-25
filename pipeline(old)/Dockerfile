@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y \
 RUN pip install psycopg2-binary numpy
 
 # Créer les répertoires nécessaires
-RUN mkdir -p /spark/jars /app/logs /app/checkpoints /app/application /app/datasource /opt/spark/conf
+RUN mkdir -p /spark/jars /app/log /app/checkpoints /app/application /app/datasource /opt/spark/conf
 
 # Télécharger les JARs spécifiques nécessaires
 RUN cd /spark/jars && \

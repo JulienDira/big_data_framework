@@ -5,6 +5,8 @@ x-pipeline-defaults: &pipeline-template
   volumes:
     - ./:/app/application
     - C:/Users/julie/Documents/M1/BIG DATA FRAMEWORK 2/datasource:/app/datasource
+  ports:
+    - "4040:4040" 
   command: ["/app/application/entrypoint.sh"]
   networks:
     - hadoopnetwork
@@ -26,18 +28,10 @@ x-common-env: &common-env
 
 services:
 
-  pipeline-all-step:
-    <<: *pipeline-template
-    container_name: pipeline_all_step
-    environment:
-      <<: *common-env
-      PY_FILE: main.py
-
   pipeline-step-0:
     <<: *pipeline-template
     container_name: source_to_db
     environment:
-      <<: *common-env
       DATA_SOURCE_PATH: /app/datasource/to_db/global_file/
       POSTGRES_JDBC_URL: jdbc:postgresql://postgres:5432/source_data
       PY_FILE: source_to_bdd.py
