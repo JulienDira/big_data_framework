@@ -1,11 +1,11 @@
 <configuration>
-    <!-- ResourceManager Hostname -->
+    <!-- Hostname du ResourceManager -->
     <property>
         <name>yarn.resourcemanager.hostname</name>
         <value>resourcemanager</value>
     </property>
 
-    <!-- ResourceManager Addresses -->
+    <!-- Adresses du ResourceManager -->
     <property>
         <name>yarn.resourcemanager.address</name>
         <value>172.20.0.4:8032</value>
@@ -27,36 +27,66 @@
         <value>172.20.0.4:8033</value>
     </property>
 
-    <!-- Alloue max 4 Go pour YARN sur ce nœud -->
+    <!-- RAM -->
     <property>
         <name>yarn.nodemanager.resource.memory-mb</name>
-        <value>4096</value>
+        <value>12288</value>
     </property>
-
-
-    <!-- Autorise des conteneurs de 2 Go max -->
     <property>
         <name>yarn.scheduler.maximum-allocation-mb</name>
-        <value>3072</value> <!-- par exemple 4 Go -->
+        <value>10240</value>
+    </property>
+    <property>
+        <name>yarn.scheduler.minimum-allocation-mb</name>
+        <value>512</value>
     </property>
 
-
-    <!-- Max 1 cœur par conteneur pour ne pas saturer -->
+    <!-- CPU -->
     <property>
         <name>yarn.nodemanager.resource.cpu-vcores</name>
-        <value>4</value>
+        <value>14</value>
     </property>
-
     <property>
         <name>yarn.scheduler.maximum-allocation-vcores</name>
-        <value>4</value>
+        <value>8</value>
+    </property>
+    <property>
+        <name>yarn.scheduler.minimum-allocation-vcores</name>
+        <value>1</value>
     </property>
 
-    <!-- Percentage of physical CPU available to YARN -->
+    <!-- Sécurité -->
     <property>
         <name>yarn.nodemanager.resource.percentage-physical-cpu-limit</name>
-        <value>50</value>
-        <description>Percentage of physical CPU resources that YARN can utilize (50%).</description>
+        <value>90</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.pmem-check-enabled</name>
+        <value>false</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.vmem-check-enabled</name>
+        <value>false</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.vmem-pmem-ratio</name>
+        <value>6.0</value>
+    </property>
+
+    <!-- Timeout -->
+    <property>
+        <name>yarn.nm.liveness-monitor.expiry-interval-ms</name>
+        <value>900000</value>
+    </property>
+
+    <!-- Logs -->
+    <property>
+        <name>yarn.log-aggregation-enable</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>yarn.log-aggregation.retain-seconds</name>
+        <value>604800</value>
     </property>
 
 </configuration>

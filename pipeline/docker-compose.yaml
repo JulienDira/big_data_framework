@@ -18,7 +18,7 @@ x-pipeline-defaults: &pipeline-template
 
 x-common-env: &common-env
   POSTGRES_JDBC_URL: jdbc:postgresql://postgres:5432/datamart
-  DATA_SOURCE_PATH: /app/datasource/
+  DATA_SOURCE_PATH: hdfs://namenode:9000/user/root/datasource/datasource/ # ou file:///app/datasource/
   RAW_PATH: hdfs://namenode:9000/RAW/
   WAREHOUSE_PATH: hdfs://namenode:9000/user/hive/warehouse/
   WAREHOUSE_DB: process_data
@@ -40,7 +40,7 @@ services:
     container_name: source_to_db
     environment:
       <<: *common-env
-      DATA_SOURCE_PATH: /app/datasource/to_db/global_file/
+      DATA_SOURCE_PATH: hdfs://namenode:9000/user/root/datasource/datasource/to_db/global_file/ # ou file:///app/datasource/to_db/global_file/
       POSTGRES_JDBC_URL: jdbc:postgresql://postgres:5432/source_data
       PY_FILE: source_to_bdd.py
 

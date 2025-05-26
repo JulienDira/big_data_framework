@@ -1,0 +1,496 @@
+Warning: Ignoring non-Spark config property: hive.metastore.uris
+:: loading settings :: url = jar:file:/opt/spark/jars/ivy-2.5.1.jar!/org/apache/ivy/core/settings/ivysettings.xml
+Ivy Default Cache set to: /root/.ivy2/cache
+The jars for the packages stored in: /root/.ivy2/jars
+org.apache.spark#spark-avro_2.12 added as a dependency
+org.postgresql#postgresql added as a dependency
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-5419422f-be69-4d96-a9c4-aa9c4c49f6b0;1.0
+	confs: [default]
+	found org.apache.spark#spark-avro_2.12;3.4.0 in central
+	found org.tukaani#xz;1.9 in central
+	found org.postgresql#postgresql;42.7.5 in central
+	found org.checkerframework#checker-qual;3.48.3 in central
+downloading https://repo1.maven.org/maven2/org/apache/spark/spark-avro_2.12/3.4.0/spark-avro_2.12-3.4.0.jar ...
+	[SUCCESSFUL ] org.apache.spark#spark-avro_2.12;3.4.0!spark-avro_2.12.jar (41ms)
+downloading https://repo1.maven.org/maven2/org/postgresql/postgresql/42.7.5/postgresql-42.7.5.jar ...
+	[SUCCESSFUL ] org.postgresql#postgresql;42.7.5!postgresql.jar (82ms)
+downloading https://repo1.maven.org/maven2/org/tukaani/xz/1.9/xz-1.9.jar ...
+	[SUCCESSFUL ] org.tukaani#xz;1.9!xz.jar (25ms)
+downloading https://repo1.maven.org/maven2/org/checkerframework/checker-qual/3.48.3/checker-qual-3.48.3.jar ...
+	[SUCCESSFUL ] org.checkerframework#checker-qual;3.48.3!checker-qual.jar (27ms)
+:: resolution report :: resolve 4147ms :: artifacts dl 185ms
+	:: modules in use:
+	org.apache.spark#spark-avro_2.12;3.4.0 from central in [default]
+	org.checkerframework#checker-qual;3.48.3 from central in [default]
+	org.postgresql#postgresql;42.7.5 from central in [default]
+	org.tukaani#xz;1.9 from central in [default]
+	---------------------------------------------------------------------
+	|                  |            modules            ||   artifacts   |
+	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+	---------------------------------------------------------------------
+	|      default     |   4   |   4   |   4   |   0   ||   4   |   4   |
+	---------------------------------------------------------------------
+:: retrieving :: org.apache.spark#spark-submit-parent-5419422f-be69-4d96-a9c4-aa9c4c49f6b0
+	confs: [default]
+	4 artifacts copied, 0 already retrieved (1604kB/15ms)
+25/05/26 17:41:33 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2025-05-26 17:41:35,847 - INFO - ---------- Démarrage de la pipeline ----------
+25/05/26 17:41:36 INFO SparkContext: Running Spark version 3.5.0
+25/05/26 17:41:36 INFO SparkContext: OS info Linux, 5.15.167.4-microsoft-standard-WSL2, amd64
+25/05/26 17:41:36 INFO SparkContext: Java version 11.0.24
+25/05/26 17:41:36 INFO ResourceUtils: ==============================================================
+25/05/26 17:41:36 INFO ResourceUtils: No custom resources configured for spark.driver.
+25/05/26 17:41:36 INFO ResourceUtils: ==============================================================
+25/05/26 17:41:36 INFO SparkContext: Submitted application: SourceToDataBase
+25/05/26 17:41:36 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(memoryOverhead -> name: memoryOverhead, amount: 512, script: , vendor: , cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 2048, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+25/05/26 17:41:36 INFO ResourceProfile: Limiting resource is cpus at 1 tasks per executor
+25/05/26 17:41:36 INFO ResourceProfileManager: Added ResourceProfile id: 0
+25/05/26 17:41:36 INFO SecurityManager: Changing view acls to: root
+25/05/26 17:41:36 INFO SecurityManager: Changing modify acls to: root
+25/05/26 17:41:36 INFO SecurityManager: Changing view acls groups to: 
+25/05/26 17:41:36 INFO SecurityManager: Changing modify acls groups to: 
+25/05/26 17:41:36 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: root; groups with view permissions: EMPTY; users with modify permissions: root; groups with modify permissions: EMPTY
+25/05/26 17:41:36 INFO Utils: Successfully started service 'sparkDriver' on port 38725.
+25/05/26 17:41:36 INFO SparkEnv: Registering MapOutputTracker
+25/05/26 17:41:36 INFO SparkEnv: Registering BlockManagerMaster
+25/05/26 17:41:36 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+25/05/26 17:41:36 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+25/05/26 17:41:36 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+25/05/26 17:41:36 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-ef5a467c-933c-4445-9c4a-1e7995725a2b
+25/05/26 17:41:36 INFO MemoryStore: MemoryStore started with capacity 1048.8 MiB
+25/05/26 17:41:36 INFO SparkEnv: Registering OutputCommitCoordinator
+25/05/26 17:41:37 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+25/05/26 17:41:37 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+25/05/26 17:41:37 INFO DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at /172.20.0.4:8032
+25/05/26 17:41:38 INFO Configuration: resource-types.xml not found
+25/05/26 17:41:38 INFO ResourceUtils: Unable to find 'resource-types.xml'.
+25/05/26 17:41:38 INFO Client: Verifying our application has not requested more than the maximum memory capability of the cluster (10240 MB per container)
+25/05/26 17:41:38 INFO Client: Will allocate AM container, with 896 MB memory including 384 MB overhead
+25/05/26 17:41:38 INFO Client: Setting up container launch context for our AM
+25/05/26 17:41:38 INFO Client: Setting up the launch environment for our AM container
+25/05/26 17:41:38 INFO Client: Preparing resources for our AM container
+25/05/26 17:41:38 WARN Client: Neither spark.yarn.jars nor spark.yarn.archive is set, falling back to uploading libraries under SPARK_HOME.
+25/05/26 17:41:43 INFO Client: Uploading resource file:/tmp/spark-220aa042-b09d-45ad-a0c0-aa4a06697190/__spark_libs__16764969313774043620.zip -> hdfs://namenode:9000/user/root/.sparkStaging/application_1748277821371_0009/__spark_libs__16764969313774043620.zip
+25/05/26 17:41:47 INFO Client: Uploading resource file:/spark/jars/spark-sql-kafka-0-10_2.12-3.5.0.jar -> hdfs://namenode:9000/user/root/.sparkStaging/application_1748277821371_0009/spark-sql-kafka-0-10_2.12-3.5.0.jar
+25/05/26 17:41:48 INFO Client: Uploading resource file:/spark/jars/kafka-clients-3.3.1.jar -> hdfs://namenode:9000/user/root/.sparkStaging/application_1748277821371_0009/kafka-clients-3.3.1.jar
+25/05/26 17:41:48 INFO Client: Uploading resource file:/spark/jars/commons-pool2-2.11.1.jar -> hdfs://namenode:9000/user/root/.sparkStaging/application_1748277821371_0009/commons-pool2-2.11.1.jar
+25/05/26 17:41:48 INFO Client: Uploading resource file:/spark/jars/spark-token-provider-kafka-0-10_2.12-3.5.0.jar -> hdfs://namenode:9000/user/root/.sparkStaging/application_1748277821371_0009/spark-token-provider-kafka-0-10_2.12-3.5.0.jar
+25/05/26 17:41:48 INFO Client: Uploading resource file:/spark/jars/postgresql-42.2.23.jar -> hdfs://namenode:9000/user/root/.sparkStaging/application_1748277821371_0009/postgresql-42.2.23.jar
+25/05/26 17:41:48 INFO Client: Uploading resource file:/root/.ivy2/jars/org.apache.spark_spark-avro_2.12-3.4.0.jar -> hdfs://namenode:9000/user/root/.sparkStaging/application_1748277821371_0009/org.apache.spark_spark-avro_2.12-3.4.0.jar
+25/05/26 17:41:48 INFO Client: Uploading resource file:/root/.ivy2/jars/org.postgresql_postgresql-42.7.5.jar -> hdfs://namenode:9000/user/root/.sparkStaging/application_1748277821371_0009/org.postgresql_postgresql-42.7.5.jar
+25/05/26 17:41:48 INFO Client: Uploading resource file:/root/.ivy2/jars/org.tukaani_xz-1.9.jar -> hdfs://namenode:9000/user/root/.sparkStaging/application_1748277821371_0009/org.tukaani_xz-1.9.jar
+25/05/26 17:41:48 INFO Client: Uploading resource file:/root/.ivy2/jars/org.checkerframework_checker-qual-3.48.3.jar -> hdfs://namenode:9000/user/root/.sparkStaging/application_1748277821371_0009/org.checkerframework_checker-qual-3.48.3.jar
+25/05/26 17:41:48 INFO Client: Uploading resource file:/opt/spark/python/lib/pyspark.zip -> hdfs://namenode:9000/user/root/.sparkStaging/application_1748277821371_0009/pyspark.zip
+25/05/26 17:41:49 INFO Client: Uploading resource file:/opt/spark/python/lib/py4j-0.10.9.7-src.zip -> hdfs://namenode:9000/user/root/.sparkStaging/application_1748277821371_0009/py4j-0.10.9.7-src.zip
+25/05/26 17:41:49 WARN Client: Same path resource file:///root/.ivy2/jars/org.apache.spark_spark-avro_2.12-3.4.0.jar added multiple times to distributed cache.
+25/05/26 17:41:49 WARN Client: Same path resource file:///root/.ivy2/jars/org.postgresql_postgresql-42.7.5.jar added multiple times to distributed cache.
+25/05/26 17:41:49 WARN Client: Same path resource file:///root/.ivy2/jars/org.tukaani_xz-1.9.jar added multiple times to distributed cache.
+25/05/26 17:41:49 WARN Client: Same path resource file:///root/.ivy2/jars/org.checkerframework_checker-qual-3.48.3.jar added multiple times to distributed cache.
+25/05/26 17:41:49 INFO Client: Uploading resource file:/tmp/spark-220aa042-b09d-45ad-a0c0-aa4a06697190/__spark_conf__10722238703847970159.zip -> hdfs://namenode:9000/user/root/.sparkStaging/application_1748277821371_0009/__spark_conf__.zip
+25/05/26 17:41:50 INFO SecurityManager: Changing view acls to: root
+25/05/26 17:41:50 INFO SecurityManager: Changing modify acls to: root
+25/05/26 17:41:50 INFO SecurityManager: Changing view acls groups to: 
+25/05/26 17:41:50 INFO SecurityManager: Changing modify acls groups to: 
+25/05/26 17:41:50 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: root; groups with view permissions: EMPTY; users with modify permissions: root; groups with modify permissions: EMPTY
+25/05/26 17:41:50 INFO Client: Submitting application application_1748277821371_0009 to ResourceManager
+25/05/26 17:41:50 INFO YarnClientImpl: Submitted application application_1748277821371_0009
+25/05/26 17:41:51 INFO Client: Application report for application_1748277821371_0009 (state: ACCEPTED)
+25/05/26 17:41:51 INFO Client: 
+	 client token: N/A
+	 diagnostics: AM container is launched, waiting for AM container to Register with RM
+	 ApplicationMaster host: N/A
+	 ApplicationMaster RPC port: -1
+	 queue: default
+	 start time: 1748279990118
+	 final status: UNDEFINED
+	 tracking URL: http://resourcemanager:8088/proxy/application_1748277821371_0009/
+	 user: root
+25/05/26 17:42:05 INFO Client: Application report for application_1748277821371_0009 (state: RUNNING)
+25/05/26 17:42:05 INFO Client: 
+	 client token: N/A
+	 diagnostics: N/A
+	 ApplicationMaster host: 172.20.0.3
+	 ApplicationMaster RPC port: -1
+	 queue: default
+	 start time: 1748279990118
+	 final status: UNDEFINED
+	 tracking URL: http://resourcemanager:8088/proxy/application_1748277821371_0009/
+	 user: root
+25/05/26 17:42:05 INFO YarnClientSchedulerBackend: Application application_1748277821371_0009 has started running.
+25/05/26 17:42:05 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 45217.
+25/05/26 17:42:05 INFO NettyBlockTransferService: Server created on e6fcfb129e1e:45217
+25/05/26 17:42:05 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+25/05/26 17:42:05 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, e6fcfb129e1e, 45217, None)
+25/05/26 17:42:05 INFO BlockManagerMasterEndpoint: Registering block manager e6fcfb129e1e:45217 with 1048.8 MiB RAM, BlockManagerId(driver, e6fcfb129e1e, 45217, None)
+25/05/26 17:42:05 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, e6fcfb129e1e, 45217, None)
+25/05/26 17:42:05 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, e6fcfb129e1e, 45217, None)
+25/05/26 17:42:05 INFO YarnClientSchedulerBackend: Add WebUI Filter. org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter, Map(PROXY_HOSTS -> resourcemanager.hadoopnetwork, PROXY_URI_BASES -> http://resourcemanager.hadoopnetwork:8088/proxy/application_1748277821371_0009), /proxy/application_1748277821371_0009
+25/05/26 17:42:05 INFO ServerInfo: Adding filter to /jobs: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/05/26 17:42:05 INFO ServerInfo: Adding filter to /jobs/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/05/26 17:42:05 INFO ServerInfo: Adding filter to /jobs/job: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/05/26 17:42:05 INFO ServerInfo: Adding filter to /jobs/job/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/05/26 17:42:05 INFO ServerInfo: Adding filter to /stages: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/05/26 17:42:05 INFO ServerInfo: Adding filter to /stages/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/05/26 17:42:05 INFO ServerInfo: Adding filter to /stages/stage: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/05/26 17:42:05 INFO ServerInfo: Adding filter to /stages/stage/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/05/26 17:42:05 INFO ServerInfo: Adding filter to /stages/pool: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/05/26 17:42:05 INFO ServerInfo: Adding filter to /stages/pool/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/05/26 17:42:05 INFO ServerInfo: Adding filter to /storage: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/05/26 17:42:05 INFO ServerInfo: Adding filter to /storage/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/05/26 17:42:05 INFO ServerInfo: Adding filter to /storage/rdd: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/05/26 17:42:05 INFO ServerInfo: Adding filter to /storage/rdd/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/05/26 17:42:05 INFO ServerInfo: Adding filter to /environment: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/05/26 17:42:05 INFO ServerInfo: Adding filter to /environment/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/05/26 17:42:05 INFO ServerInfo: Adding filter to /executors: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/05/26 17:42:05 INFO ServerInfo: Adding filter to /executors/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/05/26 17:42:05 INFO ServerInfo: Adding filter to /executors/threadDump: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/05/26 17:42:05 INFO ServerInfo: Adding filter to /executors/threadDump/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/05/26 17:42:05 INFO ServerInfo: Adding filter to /executors/heapHistogram: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/05/26 17:42:05 INFO ServerInfo: Adding filter to /executors/heapHistogram/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/05/26 17:42:05 INFO ServerInfo: Adding filter to /static: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/05/26 17:42:05 INFO ServerInfo: Adding filter to /: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/05/26 17:42:05 INFO ServerInfo: Adding filter to /api: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/05/26 17:42:05 INFO ServerInfo: Adding filter to /jobs/job/kill: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/05/26 17:42:05 INFO ServerInfo: Adding filter to /stages/stage/kill: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/05/26 17:42:05 INFO ServerInfo: Adding filter to /metrics/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+25/05/26 17:42:06 INFO YarnSchedulerBackend$YarnSchedulerEndpoint: ApplicationMaster registered as NettyRpcEndpointRef(spark-client://YarnAM)
+25/05/26 17:42:07 INFO YarnClientSchedulerBackend: SchedulerBackend is ready for scheduling beginning after waiting maxRegisteredResourcesWaitingTime: 30000000000(ns)
+2025-05-26 17:42:07,646 - INFO - ✅ SparkSession initialisée avec succès.
+2025-05-26 17:42:07,646 - INFO - ---------- Démarrage de l'étape SourceToDataBase ----------
+2025-05-26 17:42:07,690 - INFO - 
+--- Traitement du fichier : hdfs://namenode:9000/user/root/datasource/datasource/to_db/global_file/transactions_data.csv ---
+2025-05-26 17:42:07,690 - INFO - Lecture du CSV depuis : hdfs://namenode:9000/user/root/datasource/datasource/to_db/global_file/transactions_data.csv
+Table 'transactions_data' créée ou déjà existante.
+2025-05-26 17:43:17,763 - INFO - Écriture des données dans la table : transactions_data
+2025-05-26 17:44:25,026 - INFO - Données écrites avec succès dans la table transactions_data.
+2025-05-26 17:44:25,026 - INFO - ✔ Pipeline exécutée avec succès pour 'transactions_data.csv'.
+2025-05-26 17:44:25,026 - INFO - 🛑 Fermeture de la session Spark.
+2025-05-26 17:44:55,815 - INFO - ✅ SparkSession initialisée avec succès.
+2025-05-26 17:44:55,815 - INFO - ---------- Démarrage de l'étape BronzeStepFromJDBC ----------
+2025-05-26 17:44:55,833 - INFO - 
+--- Traitement de la table : transactions_data ---
+2025-05-26 17:44:55,833 - INFO - Lecture des données JDBC depuis : transactions_data
+2025-05-26 17:44:55,943 - INFO - Données lues avec succès depuis : transactions_data
+2025-05-26 17:44:56,230 - INFO - Ecriture des données vers HDFS en cours > 'hdfs://namenode:9000/RAW/transactions_data'
+
+2025-05-26 17:44:59,026 - INFO - ✔ Pipeline exécutée avec succès pour 'transactions_data'.
+2025-05-26 17:45:03,026 - INFO - 🛑 Fermeture de la session Spark.
+2025-05-26 17:45:14,815 - INFO - ✅ SparkSession initialisée avec succès.
+2025-05-26 17:45:16,251 - INFO - ---------- Démarrage de l'étape BronzeStepFromFileSys ----------
+2025-05-26 17:45:16,251 - INFO - 📁 Datasource utilisé : hdfs://namenode:9000/user/root/datasource/datasource/
+2025-05-26 17:45:16,860 - INFO - 
+--- Traitement du fichier : hdfs://namenode:9000/user/root/datasource/datasource/cards_data.csv ---
+2025-05-26 17:45:16,861 - INFO - Lecture du CSV depuis : hdfs://namenode:9000/user/root/datasource/datasource/cards_data.csv
+2025-05-26 17:45:18,860 - INFO - Ecriture des données vers HDFS en cours > 'hdfs://namenode:9000/RAW/cards_data'
+2025-05-26 17:45:44,656 - INFO - Fichier Parquet écrit dans HDFS à : 'hdfs://namenode:9000/RAW/cards_data'
+2025-05-26 17:45:44,656 - INFO - ✔ Pipeline exécutée avec succès pour 'cards_data.csv'.
+2025-05-26 17:45:44,657 - INFO - 
+--- Traitement du fichier : hdfs://namenode:9000/user/root/datasource/datasource/mcc_codes.json ---
+2025-05-26 17:45:44,694 - INFO - 📦 Taille fichier HDFS 'hdfs://namenode:9000/user/root/datasource/datasource/mcc_codes.json' : 9185 bytes
+2025-05-26 17:45:44,694 - INFO - 🔢 Nombre de partitions calculé : 1 (taille cible par partition : 40MB)
+2025-05-26 17:45:44,694 - INFO - Lecture du JSON depuis : hdfs://namenode:9000/user/root/datasource/datasource/mcc_codes.json
+2025-05-26 17:45:44,800 - INFO - Données lues avec succès depuis : hdfs://namenode:9000/user/root/datasource/datasource/mcc_codes.json
+2025-05-26 17:45:44,819 - INFO - Ecriture des données vers HDFS en cours > 'hdfs://namenode:9000/RAW/mcc_codes'
+2025-05-26 17:45:56,573 - INFO - Fichier Parquet écrit dans HDFS à : 'hdfs://namenode:9000/RAW/mcc_codes'
+2025-05-26 17:45:56,573 - INFO - ✔ Pipeline exécutée avec succès pour 'mcc_codes.json'.
+2025-05-26 17:45:56,574 - INFO - 
+--- Traitement du fichier : hdfs://namenode:9000/user/root/datasource/datasource/train_fraud_labels.csv ---
+2025-05-26 17:45:56,574 - INFO - Lecture du CSV depuis : hdfs://namenode:9000/user/root/datasource/datasource/train_fraud_labels.csv
+2025-05-26 17:45:56,645 - INFO - Ecriture des données vers HDFS en cours > 'hdfs://namenode:9000/RAW/train_fraud_labels'
+2025-05-26 17:46:26,541 - INFO - Fichier Parquet écrit dans HDFS à : 'hdfs://namenode:9000/RAW/train_fraud_labels'
+2025-05-26 17:46:26,542 - INFO - ✔ Pipeline exécutée avec succès pour 'train_fraud_labels.csv'.
+2025-05-26 17:46:26,542 - INFO - 
+--- Traitement du fichier : hdfs://namenode:9000/user/root/datasource/datasource/users_data.csv ---
+2025-05-26 17:46:26,542 - INFO - Lecture du CSV depuis : hdfs://namenode:9000/user/root/datasource/datasource/users_data.csv
+2025-05-26 17:46:26,592 - INFO - Ecriture des données vers HDFS en cours > 'hdfs://namenode:9000/RAW/users_data'
+2025-05-26 17:46:27,585 - INFO - Fichier Parquet écrit dans HDFS à : 'hdfs://namenode:9000/RAW/users_data'
+2025-05-26 17:46:27,586 - INFO - ✔ Pipeline exécutée avec succès pour 'users_data.csv'.
+2025-05-26 17:46:27,586 - INFO - 🛑 Fermeture de la session Spark.
+2025-05-26 17:46:58,320 - INFO - ✅ SparkSession initialisée avec succès.
+2025-05-26 17:46:58,321 - INFO - ✅ Classe Transformation initialisée avec succès.
+2025-05-26 17:47:25,284 - INFO - ---------- Démarrage de l'étape Preprocessing ----------
+2025-05-26 17:47:25,289 - INFO - ✅ SparkSession initialisée avec succès.
+2025-05-26 17:47:40,586 - INFO - Lecture de la dernière partition : 2025-05-26
+2025-05-26 17:47:40,828 - INFO - 🔄 Début du cleaning des transactions...
+2025-05-26 17:47:40,931 - INFO - ✅ Cleaning terminé avec succès.
+2025-05-26 17:47:42,611 - INFO - ✅ Table Hive 'process_data.transactions_data_cleaned' vérifiée ou créée avec succès à l'emplacement : hdfs://namenode:9000/user/hive/warehouse/process_data.db/transactions_data_cleaned
+2025-05-26 17:48:17,176 - INFO - ✅ Table Hive créée avec succès : process_data.transactions_data_cleaned
+2025-05-26 17:48:17,181 - INFO - ✅ SparkSession initialisée avec succès.
+2025-05-26 17:48:17,436 - INFO - 🔄 Début du cleaning des cards...
+2025-05-26 17:48:17,488 - INFO - ✅ Cleaning terminé avec succès.
+2025-05-26 17:48:17,553 - INFO - ✅ Table Hive 'process_data.cards_data_cleaned' vérifiée ou créée avec succès à l'emplacement : hdfs://namenode:9000/user/hive/warehouse/process_data.db/cards_data_cleaned
+2025-05-26 17:48:20,857 - INFO - ✅ Table Hive créée avec succès : process_data.cards_data_cleaned
+2025-05-26 17:48:20,863 - INFO - ✅ SparkSession initialisée avec succès.
+2025-05-26 17:48:21,035 - INFO - 🔄 Début du cleaning des users...
+2025-05-26 17:48:21,187 - INFO - ✅ Cleaning terminé avec succès.
+2025-05-26 17:48:21,266 - INFO - ✅ Table Hive 'process_data.users_data_cleaned' vérifiée ou créée avec succès à l'emplacement : hdfs://namenode:9000/user/hive/warehouse/process_data.db/users_data_cleaned
+2025-05-26 17:48:22,559 - INFO - ✅ Table Hive créée avec succès : process_data.users_data_cleaned
+2025-05-26 17:48:22,564 - INFO - ✅ SparkSession initialisée avec succès.
+2025-05-26 17:48:27,701 - INFO - Lecture de la dernière partition : 2025-05-26
+2025-05-26 17:48:27,829 - INFO - 🔄 Début du prétraitement des transactions...
+2025-05-26 17:48:28,231 - INFO - ✅ Prétraitement terminé avec succès.
+2025-05-26 17:48:28,303 - INFO - ✅ Table Hive 'process_data.transactions_data_processed' vérifiée ou créée avec succès à l'emplacement : hdfs://namenode:9000/user/hive/warehouse/process_data.db/transactions_data_processed
+2025-05-26 17:50:21,351 - INFO - ✅ Table Hive créée avec succès : process_data.transactions_data_processed
+2025-05-26 17:50:21,356 - INFO - ✅ SparkSession initialisée avec succès.
+2025-05-26 17:50:21,356 - INFO - 
+--- Traitement du fichier : hdfs://namenode:9000/RAW/mcc_codes ---
+2025-05-26 17:50:21,496 - INFO - ✅ Table Hive 'process_data.mcc_codes' vérifiée ou créée avec succès à l'emplacement : hdfs://namenode:9000/user/hive/warehouse/process_data.db/mcc_codes
+2025-05-26 17:50:22,611 - INFO - ✅ Table Hive créée avec succès : process_data.mcc_codes
+2025-05-26 17:50:22,611 - INFO - ✔ Pipeline exécutée avec succès pour 'mcc_codes'.
+2025-05-26 17:50:22,616 - INFO - ✅ SparkSession initialisée avec succès.
+2025-05-26 17:50:22,616 - INFO - 
+--- Traitement du fichier : hdfs://namenode:9000/RAW/train_fraud_labels ---
+2025-05-26 17:50:22,744 - INFO - ✅ Table Hive 'process_data.train_fraud_labels' vérifiée ou créée avec succès à l'emplacement : hdfs://namenode:9000/user/hive/warehouse/process_data.db/train_fraud_labels
+2025-05-26 17:50:30,797 - INFO - ✅ Table Hive créée avec succès : process_data.train_fraud_labels
+2025-05-26 17:50:30,798 - INFO - ✔ Pipeline exécutée avec succès pour 'train_fraud_labels'.
+2025-05-26 17:50:30,803 - INFO - ✅ SparkSession initialisée avec succès.
+2025-05-26 17:50:30,803 - INFO - ---------- Démarrage de l'étape DataMart ----------
+2025-05-26 17:50:30,803 - INFO - 
+--- Traitement de la table de sortie : transaction_validated ---
+2025-05-26 17:50:30,803 - INFO - === DIAGNOSTIC HIVE ===
+2025-05-26 17:50:30,955 - INFO - Bases disponibles :
+2025-05-26 17:50:30,988 - INFO - [Row(namespace='default'), Row(namespace='process_data')]
+2025-05-26 17:50:31,005 - INFO - Localisation du warehouse :
+2025-05-26 17:50:31,026 - INFO - [Row(key='hive.metastore.warehouse.dir', value='hdfs://namenode:9000/user/hive/warehouse')]
+2025-05-26 17:50:31,026 - INFO - 🔍 Exécution de la requête Hive : 
+            SELECT *
+            FROM process_data.transactions_data_processed
+            WHERE info = 'Yes'
+        
+2025-05-26 17:50:31,120 - INFO - Aperçu du résultat de la requête :
++-------+-------------------+---------+-------+------+------------------+-----------+-------------+--------------+----+----+------+--------------+----+-----------+--------------+----------+-----------+------+------------------+--------+---------+-----------------+-------------+----------+------------+----------------+----------+---------+----------------+-------+---+--------+----------------+------------+--------------+---------------------+----------------+----+
+|     id|               date|client_id|card_id|amount|          use_chip|merchant_id|merchant_city|merchant_state| zip| mcc|errors|ingestion_date|item|current_age|retirement_age|birth_year|birth_month|gender|           address|latitude|longitude|per_capita_income|yearly_income|total_debt|credit_score|num_credit_cards|card_brand|card_type|     card_number|expires|cvv|has_chip|num_cards_issued|credit_limit|acct_open_date|year_pin_last_changed|card_on_dark_web|info|
++-------+-------------------+---------+-------+------+------------------+-----------+-------------+--------------+----+----+------+--------------+----+-----------+--------------+----------+-----------+------+------------------+--------+---------+-----------------+-------------+----------+------------+----------------+----------+---------+----------------+-------+---+--------+----------------+------------+--------------+---------------------+----------------+----+
+|7506610|2010-01-09 01:43:00|      379|   2019|  23.1|Online Transaction|      81477|       ONLINE|          NULL|NULL|5311|  NULL|    2025-05-26|NULL|         47|            65|      1972|         11|Female|837 Lincoln Avenue|   30.68|   -88.04|          21331.0|      43496.0|  114563.0|         765|               3|Mastercard|    Debit|5910929635230868|02/2020|525|     YES|               1|     21628.0|       03/2001|                 2008|              No| Yes|
+|7544897|2010-01-18 18:15:00|     1600|   5050| 25.35|Online Transaction|      60152|       ONLINE|          NULL|NULL|3000|  NULL|    2025-05-26|NULL|         62|            66|      1957|          9|Female| 314 Fourth Street|   47.67|  -122.18|          49629.0|     101193.0|  124771.0|         747|               3|Mastercard|    Debit|5580555303942267|05/2021|975|     YES|               2|     22446.0|       10/2006|                 2012|              No| Yes|
++-------+-------------------+---------+-------+------+------------------+-----------+-------------+--------------+----+----+------+--------------+----+-----------+--------------+----------+-----------+------+------------------+--------+---------+-----------------+-------------+----------+------------+----------------+----------+---------+----------------+-------+---+--------+----------------+------------+--------------+---------------------+----------------+----+
+
+2025-05-26 17:50:34,059 - INFO - ✅ Requête exécutée avec succès.
+Table 'transaction_validated' créée ou déjà existante.
+2025-05-26 17:50:34,174 - INFO - Écriture des données dans la table : transaction_validated
+2025-05-26 17:50:56,133 - INFO - Données écrites avec succès dans la table transaction_validated.
+2025-05-26 17:50:56,133 - INFO - ✔ Pipeline exécutée avec succès pour 'transaction_validated'.
+2025-05-26 17:50:56,133 - INFO - 
+--- Traitement de la table de sortie : transaction_refused ---
+2025-05-26 17:50:56,133 - INFO - === DIAGNOSTIC HIVE ===
+2025-05-26 17:50:56,166 - INFO - Bases disponibles :
+2025-05-26 17:50:56,190 - INFO - [Row(namespace='default'), Row(namespace='process_data')]
+2025-05-26 17:50:56,207 - INFO - Localisation du warehouse :
+2025-05-26 17:50:56,228 - INFO - [Row(key='hive.metastore.warehouse.dir', value='hdfs://namenode:9000/user/hive/warehouse')]
+2025-05-26 17:50:56,229 - INFO - 🔍 Exécution de la requête Hive : 
+            SELECT *
+            FROM process_data.transactions_data_processed
+            WHERE info = 'No'
+        
+2025-05-26 17:50:56,304 - INFO - Aperçu du résultat de la requête :
++-------+-------------------+---------+-------+------+------------------+-----------+-------------+--------------+-------+----+------+--------------+----+-----------+--------------+----------+-----------+------+------------------+--------+---------+-----------------+-------------+----------+------------+----------------+----------+---------------+----------------+-------+---+--------+----------------+------------+--------------+---------------------+----------------+----+
+|     id|               date|client_id|card_id|amount|          use_chip|merchant_id|merchant_city|merchant_state|    zip| mcc|errors|ingestion_date|item|current_age|retirement_age|birth_year|birth_month|gender|           address|latitude|longitude|per_capita_income|yearly_income|total_debt|credit_score|num_credit_cards|card_brand|      card_type|     card_number|expires|cvv|has_chip|num_cards_issued|credit_limit|acct_open_date|year_pin_last_changed|card_on_dark_web|info|
++-------+-------------------+---------+-------+------+------------------+-----------+-------------+--------------+-------+----+------+--------------+----+-----------+--------------+----------+-----------+------+------------------+--------+---------+-----------------+-------------+----------+------------+----------------+----------+---------------+----------------+-------+---+--------+----------------+------------+--------------+---------------------+----------------+----+
+|7475335|2010-01-01 00:14:00|     1684|   2140| 26.46|Online Transaction|      39021|       ONLINE|          NULL|   NULL|4784|  NULL|    2025-05-26|NULL|         56|            65|      1963|         11|  Male|27019 Madison Lane|   36.34|   -83.28|          13668.0|      27861.0|  108313.0|         782|               5|Mastercard|Debit (Prepaid)|5955075527372953|05/2021|513|     YES|               1|        46.0|       03/2007|                 2012|              No|  No|
+|7475417|2010-01-01 02:11:00|       34|   1166|  4.07| Swipe Transaction|      49789|   Sacramento|            CA|95829.0|5541|  NULL|    2025-05-26|NULL|         41|            55|      1978|          8|  Male| 7467 Spruce Drive|   38.48|  -121.34|          25431.0|      51854.0|   72162.0|         737|               2|Mastercard|          Debit|5039048842448184|11/2023|339|     YES|               2|     10775.0|       02/2009|                 2010|              No|  No|
++-------+-------------------+---------+-------+------+------------------+-----------+-------------+--------------+-------+----+------+--------------+----+-----------+--------------+----------+-----------+------+------------------+--------+---------+-----------------+-------------+----------+------------+----------------+----------+---------------+----------------+-------+---+--------+----------------+------------+--------------+---------------------+----------------+----+
+
+2025-05-26 17:50:57,435 - INFO - ✅ Requête exécutée avec succès.
+Table 'transaction_refused' créée ou déjà existante.
+2025-05-26 17:50:57,478 - INFO - Écriture des données dans la table : transaction_refused
+2025-05-26 17:52:10,604 - INFO - Données écrites avec succès dans la table transaction_refused.
+2025-05-26 17:52:10,604 - INFO - ✔ Pipeline exécutée avec succès pour 'transaction_refused'.
+2025-05-26 17:52:10,604 - INFO - 
+--- Traitement de la table de sortie : top_10_consu ---
+2025-05-26 17:52:10,604 - INFO - === DIAGNOSTIC HIVE ===
+2025-05-26 17:52:10,625 - INFO - Bases disponibles :
+2025-05-26 17:52:10,642 - INFO - [Row(namespace='default'), Row(namespace='process_data')]
+2025-05-26 17:52:10,652 - INFO - Localisation du warehouse :
+2025-05-26 17:52:10,669 - INFO - [Row(key='hive.metastore.warehouse.dir', value='hdfs://namenode:9000/user/hive/warehouse')]
+2025-05-26 17:52:10,669 - INFO - 🔍 Exécution de la requête Hive : 
+            SELECT client_id, current_age, gender, COUNT(amount) AS total_amount
+            FROM process_data.transactions_data_processed
+            GROUP BY client_id, current_age, gender
+            ORDER BY total_amount DESC
+            LIMIT 10
+        
+2025-05-26 17:52:10,763 - INFO - Aperçu du résultat de la requête :
++---------+-----------+------+------------+
+|client_id|current_age|gender|total_amount|
++---------+-----------+------+------------+
+|     1098|         50|  Male|        8468|
+|      909|         38|  Male|        7710|
++---------+-----------+------+------------+
+
+2025-05-26 17:52:13,787 - INFO - ✅ Requête exécutée avec succès.
+Table 'top_10_consu' créée ou déjà existante.
+2025-05-26 17:52:13,817 - INFO - Écriture des données dans la table : top_10_consu
+2025-05-26 17:52:16,458 - INFO - Données écrites avec succès dans la table top_10_consu.
+2025-05-26 17:52:16,459 - INFO - ✔ Pipeline exécutée avec succès pour 'top_10_consu'.
+2025-05-26 17:52:16,459 - INFO - 
+--- Traitement de la table de sortie : kpi_by_consu_id ---
+2025-05-26 17:52:16,459 - INFO - === DIAGNOSTIC HIVE ===
+2025-05-26 17:52:16,487 - INFO - Bases disponibles :
+2025-05-26 17:52:16,501 - INFO - [Row(namespace='default'), Row(namespace='process_data')]
+2025-05-26 17:52:16,509 - INFO - Localisation du warehouse :
+2025-05-26 17:52:16,525 - INFO - [Row(key='hive.metastore.warehouse.dir', value='hdfs://namenode:9000/user/hive/warehouse')]
+2025-05-26 17:52:16,525 - INFO - 🔍 Exécution de la requête Hive : 
+            SELECT client_id, current_age, gender, 
+            COUNT(amount) AS total_amount ,COUNT(*) AS transaction_count,
+            AVG(amount) AS avg_spent,MAX(amount) AS max_spent
+            FROM process_data.transactions_data_processed
+            GROUP BY client_id, current_age, gender
+        
+2025-05-26 17:52:16,568 - INFO - Aperçu du résultat de la requête :
++---------+-----------+------+------------+-----------------+-----------------+---------+
+|client_id|current_age|gender|total_amount|transaction_count|        avg_spent|max_spent|
++---------+-----------+------+------------+-----------------+-----------------+---------+
+|      474|         55|  Male|        3085|             3085|50.40650249778065|  1792.45|
+|     1155|         83|Female|        2327|             2327|47.09010737748888|   585.29|
++---------+-----------+------+------------+-----------------+-----------------+---------+
+
+2025-05-26 17:52:20,769 - INFO - ✅ Requête exécutée avec succès.
+Table 'kpi_by_consu_id' créée ou déjà existante.
+2025-05-26 17:52:20,795 - INFO - Écriture des données dans la table : kpi_by_consu_id
+2025-05-26 17:52:23,409 - INFO - Données écrites avec succès dans la table kpi_by_consu_id.
+2025-05-26 17:52:23,409 - INFO - ✔ Pipeline exécutée avec succès pour 'kpi_by_consu_id'.
+2025-05-26 17:52:23,409 - INFO - 
+--- Traitement de la table de sortie : cards_data ---
+2025-05-26 17:52:23,409 - INFO - === DIAGNOSTIC HIVE ===
+2025-05-26 17:52:23,426 - INFO - Bases disponibles :
+2025-05-26 17:52:23,440 - INFO - [Row(namespace='default'), Row(namespace='process_data')]
+2025-05-26 17:52:23,451 - INFO - Localisation du warehouse :
+2025-05-26 17:52:23,464 - INFO - [Row(key='hive.metastore.warehouse.dir', value='hdfs://namenode:9000/user/hive/warehouse')]
+2025-05-26 17:52:23,465 - INFO - 🔍 Exécution de la requête Hive : 
+            SELECT *
+            FROM process_data.cards_data_cleaned
+        
+2025-05-26 17:52:23,532 - INFO - Aperçu du résultat de la requête :
++----+---------+----------+---------+----------------+-------+---+--------+----------------+------------+--------------+---------------------+----------------+--------------+
+|  id|client_id|card_brand|card_type|     card_number|expires|cvv|has_chip|num_cards_issued|credit_limit|acct_open_date|year_pin_last_changed|card_on_dark_web|ingestion_date|
++----+---------+----------+---------+----------------+-------+---+--------+----------------+------------+--------------+---------------------+----------------+--------------+
+|4524|      825|      Visa|    Debit|4344676511950444|12/2022|623|     YES|               2|     24295.0|       09/2002|                 2008|              No|    2025-05-26|
+|2731|      825|      Visa|    Debit|4956965974959986|12/2020|393|     YES|               2|     21968.0|       04/2014|                 2014|              No|    2025-05-26|
++----+---------+----------+---------+----------------+-------+---+--------+----------------+------------+--------------+---------------------+----------------+--------------+
+
+2025-05-26 17:52:23,857 - INFO - ✅ Requête exécutée avec succès.
+Table 'cards_data' créée ou déjà existante.
+2025-05-26 17:52:23,887 - INFO - Écriture des données dans la table : cards_data
+2025-05-26 17:52:24,610 - INFO - Données écrites avec succès dans la table cards_data.
+2025-05-26 17:52:24,610 - INFO - ✔ Pipeline exécutée avec succès pour 'cards_data'.
+2025-05-26 17:52:24,610 - INFO - 
+--- Traitement de la table de sortie : mcc_codes ---
+2025-05-26 17:52:24,610 - INFO - === DIAGNOSTIC HIVE ===
+2025-05-26 17:52:24,626 - INFO - Bases disponibles :
+2025-05-26 17:52:24,639 - INFO - [Row(namespace='default'), Row(namespace='process_data')]
+2025-05-26 17:52:24,647 - INFO - Localisation du warehouse :
+2025-05-26 17:52:24,660 - INFO - [Row(key='hive.metastore.warehouse.dir', value='hdfs://namenode:9000/user/hive/warehouse')]
+2025-05-26 17:52:24,660 - INFO - 🔍 Exécution de la requête Hive : 
+            SELECT *
+            FROM process_data.mcc_codes
+        
+2025-05-26 17:52:24,704 - INFO - Aperçu du résultat de la requête :
++----+--------------------+
+|  id|                item|
++----+--------------------+
+|5812|Eating Places and...|
+|5541|    Service Stations|
++----+--------------------+
+
+2025-05-26 17:52:24,902 - INFO - ✅ Requête exécutée avec succès.
+Table 'mcc_codes' créée ou déjà existante.
+2025-05-26 17:52:24,927 - INFO - Écriture des données dans la table : mcc_codes
+2025-05-26 17:52:25,323 - INFO - Données écrites avec succès dans la table mcc_codes.
+2025-05-26 17:52:25,323 - INFO - ✔ Pipeline exécutée avec succès pour 'mcc_codes'.
+2025-05-26 17:52:25,323 - INFO - 
+--- Traitement de la table de sortie : train_fraud_labels ---
+2025-05-26 17:52:25,323 - INFO - === DIAGNOSTIC HIVE ===
+2025-05-26 17:52:25,339 - INFO - Bases disponibles :
+2025-05-26 17:52:25,351 - INFO - [Row(namespace='default'), Row(namespace='process_data')]
+2025-05-26 17:52:25,360 - INFO - Localisation du warehouse :
+2025-05-26 17:52:25,373 - INFO - [Row(key='hive.metastore.warehouse.dir', value='hdfs://namenode:9000/user/hive/warehouse')]
+2025-05-26 17:52:25,373 - INFO - 🔍 Exécution de la requête Hive : 
+            SELECT *
+            FROM process_data.train_fraud_labels
+        
+2025-05-26 17:52:25,414 - INFO - Aperçu du résultat de la requête :
++--------+----+
+|      id|info|
++--------+----+
+|10649266|  No|
+|23410063|  No|
++--------+----+
+
+2025-05-26 17:52:26,559 - INFO - ✅ Requête exécutée avec succès.
+Table 'train_fraud_labels' créée ou déjà existante.
+2025-05-26 17:52:26,583 - INFO - Écriture des données dans la table : train_fraud_labels
+2025-05-26 17:53:21,898 - INFO - Données écrites avec succès dans la table train_fraud_labels.
+2025-05-26 17:53:21,898 - INFO - ✔ Pipeline exécutée avec succès pour 'train_fraud_labels'.
+2025-05-26 17:53:21,898 - INFO - 
+--- Traitement de la table de sortie : transactions_data ---
+2025-05-26 17:53:21,898 - INFO - === DIAGNOSTIC HIVE ===
+2025-05-26 17:53:21,916 - INFO - Bases disponibles :
+2025-05-26 17:53:21,929 - INFO - [Row(namespace='default'), Row(namespace='process_data')]
+2025-05-26 17:53:21,938 - INFO - Localisation du warehouse :
+2025-05-26 17:53:21,951 - INFO - [Row(key='hive.metastore.warehouse.dir', value='hdfs://namenode:9000/user/hive/warehouse')]
+2025-05-26 17:53:21,951 - INFO - 🔍 Exécution de la requête Hive : 
+            SELECT *
+            FROM process_data.transactions_data_cleaned
+        
+2025-05-26 17:53:22,012 - INFO - Aperçu du résultat de la requête :
++-------+-------------------+---------+-------+------+-----------------+-----------+-------------+--------------+-------+----+------+--------------+
+|     id|               date|client_id|card_id|amount|         use_chip|merchant_id|merchant_city|merchant_state|    zip| mcc|errors|ingestion_date|
++-------+-------------------+---------+-------+------+-----------------+-----------+-------------+--------------+-------+----+------+--------------+
+|7475327|2010-01-01 00:01:00|     1556|   2972| -77.0|Swipe Transaction|      59935|       Beulah|            ND|58523.0|5499|  NULL|    2025-05-26|
+|7475328|2010-01-01 00:02:00|      561|   4575| 14.57|Swipe Transaction|      67570|   Bettendorf|            IA|52722.0|5311|  NULL|    2025-05-26|
++-------+-------------------+---------+-------+------+-----------------+-----------+-------------+--------------+-------+----+------+--------------+
+
+2025-05-26 17:53:23,563 - INFO - ✅ Requête exécutée avec succès.
+Table 'transactions_data' créée ou déjà existante.
+2025-05-26 17:53:23,591 - INFO - Écriture des données dans la table : transactions_data
+2025-05-26 17:54:41,141 - INFO - Données écrites avec succès dans la table transactions_data.
+2025-05-26 17:54:41,141 - INFO - ✔ Pipeline exécutée avec succès pour 'transactions_data'.
+2025-05-26 17:54:41,141 - INFO - 
+--- Traitement de la table de sortie : transactions_data_processed ---
+2025-05-26 17:54:41,141 - INFO - === DIAGNOSTIC HIVE ===
+2025-05-26 17:54:41,162 - INFO - Bases disponibles :
+2025-05-26 17:54:41,175 - INFO - [Row(namespace='default'), Row(namespace='process_data')]
+2025-05-26 17:54:41,183 - INFO - Localisation du warehouse :
+2025-05-26 17:54:41,199 - INFO - [Row(key='hive.metastore.warehouse.dir', value='hdfs://namenode:9000/user/hive/warehouse')]
+2025-05-26 17:54:41,199 - INFO - 🔍 Exécution de la requête Hive : 
+            SELECT *
+            FROM process_data.transactions_data_processed
+        
+2025-05-26 17:54:41,254 - INFO - Aperçu du résultat de la requête :
++-------+-------------------+---------+-------+------+------------------+-----------+-------------+--------------+-------+----+------+--------------+----+-----------+--------------+----------+-----------+------+------------------+--------+---------+-----------------+-------------+----------+------------+----------------+----------+---------------+----------------+-------+---+--------+----------------+------------+--------------+---------------------+----------------+----+
+|     id|               date|client_id|card_id|amount|          use_chip|merchant_id|merchant_city|merchant_state|    zip| mcc|errors|ingestion_date|item|current_age|retirement_age|birth_year|birth_month|gender|           address|latitude|longitude|per_capita_income|yearly_income|total_debt|credit_score|num_credit_cards|card_brand|      card_type|     card_number|expires|cvv|has_chip|num_cards_issued|credit_limit|acct_open_date|year_pin_last_changed|card_on_dark_web|info|
++-------+-------------------+---------+-------+------+------------------+-----------+-------------+--------------+-------+----+------+--------------+----+-----------+--------------+----------+-----------+------+------------------+--------+---------+-----------------+-------------+----------+------------+----------------+----------+---------------+----------------+-------+---+--------+----------------+------------+--------------+---------------------+----------------+----+
+|7475335|2010-01-01 00:14:00|     1684|   2140| 26.46|Online Transaction|      39021|       ONLINE|          NULL|   NULL|4784|  NULL|    2025-05-26|NULL|         56|            65|      1963|         11|  Male|27019 Madison Lane|   36.34|   -83.28|          13668.0|      27861.0|  108313.0|         782|               5|Mastercard|Debit (Prepaid)|5955075527372953|05/2021|513|     YES|               1|        46.0|       03/2007|                 2012|              No|  No|
+|7475417|2010-01-01 02:11:00|       34|   1166|  4.07| Swipe Transaction|      49789|   Sacramento|            CA|95829.0|5541|  NULL|    2025-05-26|NULL|         41|            55|      1978|          8|  Male| 7467 Spruce Drive|   38.48|  -121.34|          25431.0|      51854.0|   72162.0|         737|               2|Mastercard|          Debit|5039048842448184|11/2023|339|     YES|               2|     10775.0|       02/2009|                 2010|              No|  No|
++-------+-------------------+---------+-------+------+------------------+-----------+-------------+--------------+-------+----+------+--------------+----+-----------+--------------+----------+-----------+------+------------------+--------+---------+-----------------+-------------+----------+------------+----------------+----------+---------------+----------------+-------+---+--------+----------------+------------+--------------+---------------------+----------------+----+
+
+2025-05-26 17:54:41,799 - INFO - ✅ Requête exécutée avec succès.
+Table 'transactions_data_processed' créée ou déjà existante.
+2025-05-26 17:54:41,832 - INFO - Écriture des données dans la table : transactions_data_processed
+2025-05-26 17:55:50,475 - INFO - Données écrites avec succès dans la table transactions_data_processed.
+2025-05-26 17:55:50,475 - INFO - ✔ Pipeline exécutée avec succès pour 'transactions_data_processed'.
+2025-05-26 17:55:50,475 - INFO - 
+--- Traitement de la table de sortie : users_data ---
+2025-05-26 17:55:50,475 - INFO - === DIAGNOSTIC HIVE ===
+2025-05-26 17:55:50,495 - INFO - Bases disponibles :
+2025-05-26 17:55:50,509 - INFO - [Row(namespace='default'), Row(namespace='process_data')]
+2025-05-26 17:55:50,517 - INFO - Localisation du warehouse :
+2025-05-26 17:55:50,530 - INFO - [Row(key='hive.metastore.warehouse.dir', value='hdfs://namenode:9000/user/hive/warehouse')]
+2025-05-26 17:55:50,530 - INFO - 🔍 Exécution de la requête Hive : 
+            SELECT *
+            FROM process_data.users_data_cleaned
+        
+2025-05-26 17:55:50,585 - INFO - Aperçu du résultat de la requête :
++----+-----------+--------------+----------+-----------+------+--------------------+--------+---------+-----------------+-------------+----------+------------+----------------+--------------+
+|  id|current_age|retirement_age|birth_year|birth_month|gender|             address|latitude|longitude|per_capita_income|yearly_income|total_debt|credit_score|num_credit_cards|ingestion_date|
++----+-----------+--------------+----------+-----------+------+--------------------+--------+---------+-----------------+-------------+----------+------------+----------------+--------------+
+| 825|         53|            66|      1966|         11|Female|       462 Rose Lane|   34.15|  -117.76|          29278.0|      59696.0|  127613.0|         787|               5|    2025-05-26|
+|1746|         53|            68|      1966|         12|Female|3606 Federal Boul...|   40.76|   -73.74|          37891.0|      77254.0|  191349.0|         701|               5|    2025-05-26|
++----+-----------+--------------+----------+-----------+------+--------------------+--------+---------+-----------------+-------------+----------+------------+----------------+--------------+
+
+2025-05-26 17:55:50,853 - INFO - ✅ Requête exécutée avec succès.
+Table 'users_data' créée ou déjà existante.
+2025-05-26 17:55:50,884 - INFO - Écriture des données dans la table : users_data
+2025-05-26 17:55:51,502 - INFO - Données écrites avec succès dans la table users_data.
+2025-05-26 17:55:51,502 - INFO - ✔ Pipeline exécutée avec succès pour 'users_data'.
+2025-05-26 17:55:51,502 - INFO - 🛑 Fermeture de la session Spark.

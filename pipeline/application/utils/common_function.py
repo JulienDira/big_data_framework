@@ -81,7 +81,7 @@ class SparkPipeline:
         Lecture des données depuis le file system avec un schéma explicite.
         """
         try:
-            file_size_bytes = get_file_size_bytes(full_table_path)
+            file_size_bytes = get_file_size_bytes(full_table_path, self.spark)
             n_partition = calculate_partitions(file_size_bytes, target_partition_size_mb=40)
             
             self.logger.info(f"Lecture du JSON depuis : {full_table_path}")

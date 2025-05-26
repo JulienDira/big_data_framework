@@ -9,17 +9,18 @@ import logging
 
 if __name__ == "__main__":
     
+    
     logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
     logger = logging.getLogger(__name__)
     logger.info("---------- Démarrage de la pipeline ----------")
     
-    os.environ['DATA_SOURCE_PATH'] = '/app/datasource/to_db/global_file/'
+    os.environ['DATA_SOURCE_PATH'] = "hdfs://namenode:9000/user/root/datasource/datasource/to_db/global_file/" # '/app/datasource/to_db/global_file/' ou 'hdfs://namenode:9000/user/root/datasource/datasource/to_db/global_file/'
     os.environ['POSTGRES_JDBC_URL'] = 'jdbc:postgresql://postgres:5432/source_data'
     
     source_to_bdd.run_pipeline(app_name='SourceToDataBase')
     feeder_jdbc.run_pipeline(app_name='BronzeStepFromJDBC')
 
-    os.environ['DATA_SOURCE_PATH'] = '/app/datasource/'
+    os.environ['DATA_SOURCE_PATH'] = 'hdfs://namenode:9000/user/root/datasource/datasource/' # 'hdfs://namenode:9000/user/root/datasource/datasource/' ou 'file:///app/datasource/'
     os.environ['POSTGRES_JDBC_URL'] = 'jdbc:postgresql://postgres:5432/datamart'
     
     feeder_file.run_pipeline(app_name='BronzeStepFromFileSys')
